@@ -179,7 +179,6 @@ else
 
     # 验证替换是否成功
     set result (sed -n "$target_line"p $main_js_path)
-    print_info "修改后的行: "(set_color yellow)$result(set_color normal)
     print_success "成功修改main.js文件"
 end
 
@@ -322,9 +321,9 @@ end
 
 # 清理
 print_step "正在清理临时文件..."
-rm -f ./$appimage_name
+rm -f "./$appimage_name.new"
 rm -rf $temp_dir
 
 echo (set_color -o magenta)"=== 处理完成! ==="(set_color normal)
 print_success 修改后的AppImage已替换原始文件
-print_success "原始AppImage已备份为: $appimage_path.$backup_name"
+print_success "原始AppImage已备份为: $appimage_path.bak"
