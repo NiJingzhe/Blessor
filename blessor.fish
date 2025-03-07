@@ -86,7 +86,6 @@ set appimage_path $argv[1]
 set appimage_name (basename $appimage_path)
 set current_dir (pwd)
 set temp_dir "$current_dir/appimage_temp"
-set backup_name "$appimage_name.bak"
 
 # 检查文件是否存在
 if not test -f $appimage_path
@@ -159,6 +158,7 @@ print_step "正在检查并修改main.js文件..."
 if not grep -F "$search_content" $main_js_path
     print_warning "在main.js中未找到需要替换的内容"
     rm -rf $temp_dir
+    rm -f $appimage_name
     exit 1
 else
     # 找到包含目标内容的行
@@ -298,7 +298,7 @@ sudo chmod $original_permissions "$appimage_name.new"
 # 备份原始AppImage并替换
 print_step "正在备份原始AppImage并替换..."
 if test -f $appimage_path
-    sudo cp $appimage_path "$appimage_path.$backup_name"
+    sudo cp $appimage_path "$appimage_path.bak"
     if test $status -ne 0
         print_error 无法备份原始AppImage
         rm -rf $temp_dir
@@ -312,7 +312,7 @@ if test -f $appimage_path
         exit 1
     end
 
-    print_success "成功备份原始AppImage为: $appimage_path.$backup_name"
+    print_success "成功备份原始AppImage为: $appimage_path.bak"
     print_success 成功替换原始AppImage
 else
     print_warning "原始AppImage不存在，无法替换"
