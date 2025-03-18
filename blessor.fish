@@ -719,6 +719,7 @@ end
 # 清理
 print_step (get_msg "step_cleanup")
 rm -f "./$appimage_name.new"
+rm -f "./$appimage_name"
 rm -rf $temp_dir
 
 echo (set_color -o magenta)(get_msg "finish")(set_color normal)
