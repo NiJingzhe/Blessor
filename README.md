@@ -144,12 +144,12 @@ Blessor 在 Windows 上的工作流程如下：
 5. 验证替换是否成功
 
 主要替换内容：
-- 原始指令：`win32:\`${b5[o$()]}\\REG.exe QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid\``
-- 替换为：`win32:\`@powershell -NoProfile -Command "echo xxxx    REG_SZ    $([guid]::NewGuid().toString())"\``
+- 原始指令：``` win32:`${b5[o$()]}\\REG.exe QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid\` ```
+- 替换为：``` win32: `@powershell -NoProfile -Command "echo xxxx    REG_SZ    $([guid]::NewGuid().toString())"` ```
 
 ## ⚠️ 注意事项
 
-- 该工具需要管理员/sudo 权限才能运行
+- 该工具需要`管理员` / `sudo` 权限才能运行
 - 原始文件将被备份（Linux: `[原文件名].bak`；Windows: `main.js.bak`）
 - 该工具仅用于学习和研究目的
 - 请尊重开发者的劳动成果，有条件请购买正版软件
@@ -312,12 +312,12 @@ The workflow of the Blessor tool on Windows is as follows:
 5. Verify the replacement was successful
 
 Main content replacement:
-- Original command: `win32:\`${b5[o$()]}\\REG.exe QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid\``
-- Replaced with: `win32:\`@powershell -NoProfile -Command "echo xxxx    REG_SZ    $([guid]::NewGuid().toString())"\``
+- Original command: ``` win32:`${b5[o$()]}\\REG.exe QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid\` ```
+- Replaced with: ``` win32:`@powershell -NoProfile -Command "echo xxxx    REG_SZ    $([guid]::NewGuid().toString())"` ```
 
 ## ⚠️ Notes
 
-- This tool requires administrator/sudo privileges to run
+- This tool requires `administrator` / `sudo` privileges to run
 - The original file will be backed up (Linux: `[original filename].bak`; Windows: `main.js.bak`)
 - This tool is for learning and research purposes only
 - Please respect the work of developers and purchase licensed software if possible
