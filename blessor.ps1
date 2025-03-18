@@ -1,6 +1,6 @@
-# blessor.ps1 - Cursor 机器码检查绕过工具 (Windows版)
+﻿# blessor.ps1 - Cursor 机器码检查绕过工具 (Windows版)
 
-# 解析命令行参数
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', '')]
 param(
     [string]$CursorPath,
     [switch]$help
@@ -229,7 +229,7 @@ function Get-Message {
 }
 
 # 语言选择函数
-function Choose-Language {
+function Select-Language {
     Write-Host (Get-Message "lang_select") -ForegroundColor Magenta
     Write-Host (Get-Message "lang_option1") -ForegroundColor Blue
     Write-Host (Get-Message "lang_option2") -ForegroundColor Blue
@@ -321,29 +321,29 @@ function Show-Banner {
 function Show-Help {
     Write-Host (Get-Message "help_title") -ForegroundColor Blue
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "用途:" : "Purpose:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "用途:" } else { "Purpose:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_purpose")
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "用法:" : "Usage:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "用法:" } else { "Usage:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_usage")
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "参数:" : "Parameters:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "参数:" } else { "Parameters:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_params")
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "选项:" : "Options:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "选项:" } else { "Options:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_options")
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "示例:" : "Examples:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "示例:" } else { "Examples:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_example1")
     Write-Host (Get-Message "help_example2")
     Write-Host ""
-    Write-Host ($global:lang -eq "zh" ? "注意:" : "Notes:") -ForegroundColor Yellow
+    Write-Host (if ($global:lang -eq "zh") { "注意:" } else { "Notes:" }) -ForegroundColor Yellow
     Write-Host (Get-Message "help_note1")
     Write-Host (Get-Message "help_note2")
 }
 
 # 语言选择
-Choose-Language
+Select-Language
 
 # 显示帮助
 if ($help -or $args -contains "-h" -or $args -contains "-help" -or $args -contains "--help") {
